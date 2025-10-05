@@ -1,24 +1,28 @@
-from pathlib import Path
 import os
+from pathlib import Path
 import dj_database_url
+from dotenv import load_dotenv
 
-# Base directory
+# Load environment variables from .env (optional for local dev)
+load_dotenv()
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Secret Key
+# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret-key")
 
-# Debug mode
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-# Allowed hosts
+# Hosts allowed to serve your app
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
-# Installed apps
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -26,10 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mytutorapp',
+    'mytutorapp',  # Your custom app
 ]
 
-# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -40,15 +43,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# URLs and WSGI
 ROOT_URLCONF = 'kgt_website.urls'
-WSGI_APPLICATION = 'kgt_website.wsgi.application'
 
-# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],  # Project-level templates folder
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -61,7 +61,9 @@ TEMPLATES = [
     },
 ]
 
-# Database (SQLite default, use Postgres on Render if desired)
+WSGI_APPLICATION = 'kgt_website.wsgi.application'
+
+# Database configuration
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get("DATABASE_URL", f"sqlite:///{BASE_DIR / 'kgt_db'}")
@@ -82,16 +84,111 @@ TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = True
 
-# Static files
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / "static"]  # Optional for local development
+STATIC_ROOT = BASE_DIR / 'staticfiles'    # For collectstatic in production
 
-# Default primary key
+# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Login URL
 LOGIN_URL = '/login/'
+
+# from pathlib import Path
+# import os
+# import dj_database_url
+
+# # Base directory
+# BASE_DIR = Path(__file__).resolve().parent.parent
+
+# # Secret Key
+# SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret-key")
+
+# # Debug mode
+# DEBUG = os.environ.get("DEBUG", "False") == "True"
+
+# # Allowed hosts
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
+
+# # Media files
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'mediafiles'
+
+# # Installed apps
+# INSTALLED_APPS = [
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     'mytutorapp',
+# ]
+
+# # Middleware
+# MIDDLEWARE = [
+#     'django.middleware.security.SecurityMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# ]
+
+# # URLs and WSGI
+# ROOT_URLCONF = 'kgt_website.urls'
+# WSGI_APPLICATION = 'kgt_website.wsgi.application'
+
+# # Templates
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [BASE_DIR / 'templates'],
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         },
+#     },
+# ]
+
+# # Database (SQLite default, use Postgres on Render if desired)
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get("DATABASE_URL", f"sqlite:///{BASE_DIR / 'kgt_db'}")
+#     )
+# }
+
+# # Password validation
+# AUTH_PASSWORD_VALIDATORS = [
+#     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
+#     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
+#     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
+#     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
+# ]
+
+# # Internationalization
+# LANGUAGE_CODE = 'en-us'
+# TIME_ZONE = 'Asia/Kolkata'
+# USE_I18N = True
+# USE_TZ = True
+
+# # Static files
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [BASE_DIR / "static"]
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# # Default primary key
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# # Login URL
+# LOGIN_URL = '/login/'
 
 # from pathlib import Path
 # import os
