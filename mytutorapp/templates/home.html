@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | Khushi Group Tuition{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <!-- Carousel Section -->
+    <div id="studentCarousel" class="carousel slide mb-5 shadow-sm" data-bs-ride="carousel">
+        <div class="carousel-inner rounded">
+            <div class="carousel-item active">
+                <img src="{% static 'images/student1.jpg' %}" class="d-block w-100" alt="Online Student 1">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/student2.jpg' %}" class="d-block w-100" alt="Online Student 2">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/student3.jpg' %}" class="d-block w-100" alt="Online Student 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#studentCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark rounded" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#studentCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark rounded" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="p-5 text-center bg-light rounded-3 shadow-sm">
+        <h1 class="display-5 fw-bold text-primary">Welcome to KHUSHI GROUP TUITION</h1>
+        <p class="lead">Online & Offline Classes for Classes 5 to 12 – Science, Maths, English & Account </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="{% url 'register' %}" class="btn btn-success btn-lg px-4 gap-3">
+                <i class="fas fa-user-plus me-1"></i> Join Now
+            </a>
+            <a href="{% url 'courses' %}" class="btn btn-outline-primary btn-lg px-4">
+                <i class="fas fa-book-open me-1"></i> View Courses
+            </a>
+        </div>
+    </div>
+
+    {% if message %}
+        <div class="alert alert-success mt-4 text-center">{{ message }}</div>
+    {% endif %}
+
+    <!-- Features -->
+    <div class="row text-center mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-chalkboard-teacher fa-2x text-primary mb-2"></i>
+                    <h5>Expert Faculty</h5>
+                    <p>Skilled and experienced teachers guiding every student individually.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-laptop fa-2x text-success mb-2"></i>
+                    <h5>Live Online Classes</h5>
+                    <p>Attend high-quality live classes from the comfort of your home.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-tasks fa-2x text-warning mb-2"></i>
+                    <h5>Daily Practice</h5>
+                    <p>Worksheets, homework help, and regular tests to boost performance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="bg-white shadow-sm p-4 mt-5 rounded">
+        <h3 class="text-center mb-3"><i class="fas fa-info-circle text-primary me-2"></i>About Khushi Group Tuition</h3>
+        <p class="text-center">
+            Founded in 2016, Khushi Group Tuition provides a nurturing environment for students of Classes 5 to 10.
+            We combine classroom learning with modern tools to help students succeed in Science, Maths, English, and more.
+        </p>
+    </div>
+
+    <!-- Demo Class -->
+    <div class="mt-5 text-center">
+        <h4><i class="fas fa-play-circle text-danger me-2"></i>Demo Class – Watch Now</h4>
+        <div class="ratio ratio-16x9 mt-3">
+            <iframe  src="https://www.youtube.com/embed/1WPQ8foqeY8"  title="Demo Class" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="mt-5">
+        <h4 class="text-center mb-4"><i class="fas fa-comment-dots text-success me-2"></i>What Students Say</h4>
+        <div class="row text-center">
+            <div class="col-md-4 mb-3">
+                <div class="card p-3 shadow-sm">
+                    <p>"The teachers are amazing and explain every concept so well!"</p>
+                    <strong>– Priya, Class 8</strong>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card p-3 shadow-sm">
+                    <p>"I improved in Maths and Science after joining KGT!"</p>
+                    <strong>– Rahul, Class 10</strong>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card p-3 shadow-sm">
+                    <p>"Love the study materials and daily practice support."</p>
+                    <strong>– Anjali, Class 12</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="text-center mt-5">
+        <h5>Have questions? Contact us:</h5>
+        <p class="lead">
+            📞 <a href="tel:7096906366" class="text-decoration-none">7096906366</a><br>
+            💬 <a href="https://wa.me/917096906366" class="btn btn-success mt-2" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </p>
+        <div class="mt-3">
+            <a href="https://www.youtube.com/@KGTSmartLearners" target="_blank" class="btn btn-danger">
+                <i class="fab fa-youtube"></i> Subscribe on YouTube
+            </a>
+        </div>
+    </div>
+
+    <!-- CTA Footer -->
+    <div class="mt-5 p-4 bg-primary text-white text-center rounded shadow-sm">
+        <h4 class="fw-bold">Start your success journey with Khushi Group Tuition!</h4>
+        <a href="{% url 'register' %}" class="btn btn-light mt-3">
+            <i class="fas fa-arrow-right"></i> Enroll Now
+        </a>
+    </div>
+</div>
+<!-- Achievements / Stats Section -->
+<div class="container text-center mt-5">
+    <h3 class="mb-4"><i class="fas fa-star text-warning me-2"></i>Our Achievements</h3>
+    <div class="row">
+        <div class="col-md-3 col-6">
+            <h1 class="display-5 fw-bold text-primary">500+</h1>
+            <p>Happy Students</p>
+        </div>
+        <div class="col-md-3 col-6">
+            <h1 class="display-5 fw-bold text-success">100%</h1>
+            <p>Exam Success Rate</p>
+        </div>
+        <div class="col-md-3 col-6">
+            <h1 class="display-5 fw-bold text-danger">30+</h1>
+            <p>Expert Teachers</p>
+        </div>
+        <div class="col-md-3 col-6">
+            <h1 class="display-5 fw-bold text-warning">9.5/10</h1>
+            <p>Student Rating</p>
+        </div>
+    </div>
+</div>
+<!-- Toppers Carousel -->
+<div class="container mt-5">
+    <h4 class="text-center mb-4"><i class="fas fa-trophy text-warning me-2"></i>Our Toppers</h4>
+    <div id="successCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+                <img src="{% static 'images/topper1.jpg' %}" class="rounded-circle mb-3" style="width: 120px;" alt="Topper 1">
+                <h5>Ritika Sharma</h5>
+                <p>Class 10 – 95% in CBSE Board</p>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/topper2.jpg' %}" class="rounded-circle mb-3" style="width: 120px;" alt="Topper 2">
+                <h5>Aman Verma</h5>
+                <p>Class 9 – School Topper</p>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#successCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#successCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
+<!-- FAQs Section -->
+<div class="container mt-5">
+    <h3 class="text-center mb-4"><i class="fas fa-question-circle text-info me-2"></i>Frequently Asked Questions</h3>
+    <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                    What subjects do you teach?
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show">
+                <div class="accordion-body">We teach Science, Maths, English, and more for classes 5 to 10 (CBSE & State Board).</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                    Are demo classes available?
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse">
+                <div class="accordion-body">Yes, students can attend one free demo class before enrolling.</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Subject Strengths -->
+<div class="container mt-5">
+    <h3 class="text-center mb-4"><i class="fas fa-chart-line me-2 text-primary"></i>Student Focus Areas</h3>
+    <div>
+        <p>Maths</p>
+        <div class="progress mb-3">
+            <div class="progress-bar bg-success" style="width: 85%">85%</div>
+        </div>
+        <p>Science</p>
+        <div class="progress mb-3">
+            <div class="progress-bar bg-info" style="width: 90%">90%</div>
+        </div>
+        <p>English</p>
+        <div class="progress mb-3">
+            <div class="progress-bar bg-warning" style="width: 75%">75%</div>
+        </div>
+    </div>
+</div>
+<!-- Floating WhatsApp CTA -->
+<a href="https://wa.me/917096906366" class="btn btn-success position-fixed bottom-0 end-0 m-4 rounded-circle shadow-lg" style="z-index: 1030;">
+    <i class="fab fa-whatsapp fa-lg"></i>
+</a>
+
+
+{% endblock %}

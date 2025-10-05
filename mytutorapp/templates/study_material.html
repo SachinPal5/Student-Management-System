@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Study Material{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">📚 Free Study Material (Course-wise)</h2>
+
+    {% if grouped_materials %}
+        <div class="accordion" id="materialAccordion">
+            {% for course_title, materials in grouped_materials.items %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading{{ course_title|slugify }}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ course_title|slugify }}" aria-expanded="false" aria-controls="collapse{{ course_title|slugify }}">
+                            {{ course_title }}
+                        </button>
+                    </h2>
+                    <div id="collapse{{ course_title|slugify }}" class="accordion-collapse collapse" aria-labelledby="heading{{ course_title|slugify }}" data-bs-parent="#materialAccordion">
+                        <div class="accordion-body">
+                            <ul class="list-group">
+                                {% for item in materials %}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ item.title }}
+                                        <a href="{{ item.file.url }}" class="btn btn-sm btn-outline-success" download>
+                                            <i class="fas fa-download me-1"></i>Download
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted text-center">No study material uploaded yet.</p>
+    {% endif %}
+</div>
+
+<!-- ✅ Free YouTube Videos Section -->
+<hr class="my-5">
+<div class="container">
+    <h3 class="text-center mb-4">🎥 Free YouTube Video Lectures</h3>
+    <div class="row justify-content-center">
+
+        <div class="col-md-6 mb-4">
+            <div class="ratio ratio-16x9 shadow-sm">
+                <iframe 
+                    src="https://www.youtube.com/embed/e8heKtxcCb0" 
+                    title="Free Lecture 1" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="ratio ratio-16x9 shadow-sm">
+                <iframe 
+                    src="https://www.youtube.com/embed/1WPQ8foqeY8" 
+                    title="Free Lecture 2" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="https://www.youtube.com/@KGTSmartLearners" target="_blank" class="btn btn-danger">
+                <i class="fab fa-youtube me-1"></i> Visit Full YouTube Channel
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ✅ Extra PDF Section -->
+<hr class="my-5">
+<div class="container">
+    <h3 class="text-center mb-4">📄 Download Extra Free Notes (Static)</h3>
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'images/photo2.jpeg' %}" class="card-img-top" alt="Teachers" loading="lazy">
+                <div class="card-body">
+                    <h5 class="card-title">Our Teachers</h5>
+                    <p class="card-text">Meet our expert faculty who guide every student with personal attention.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">📘 Class 10 PDF Notes (Hindi Medium)</h5>
+                    <p class="card-text">Click below to download the sample notes as a static resource.</p>
+                    <a href="{% static 'pdf/Science Hindi Medium Class 10.pdf' %}" class="btn btn-outline-primary" download>
+                        <i class="fas fa-file-pdf me-1"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

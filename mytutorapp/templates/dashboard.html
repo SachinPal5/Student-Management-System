@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard | Khushi Group Tuition{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <!-- Welcome Section -->
+    <div class="bg-light p-4 rounded shadow-sm mb-4">
+        <h3 class="text-primary fw-bold">👋 Welcome, {{ student.user.first_name }}!</h3>
+        <p class="mb-1">📚 <strong>Course:</strong> {{ student.course.title }}</p>
+        <p class="mb-0">📅 <strong>Schedule:</strong> {{ student.course.schedule }}</p>
+    </div>
+
+    <!-- Study Materials -->
+    <div class="mt-4">
+        <h4 class="mb-3"><i class="fas fa-book text-success me-1"></i> Study Materials</h4>
+
+        {% if materials %}
+            <div class="row">
+                {% for material in materials %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">{{ material.title }}</h5>
+                                
+                                {% if material.description %}
+                                    <p class="card-text">{{ material.description }}</p>
+                                {% endif %}
+                                
+                                {% if material.file %}
+                                    <a href="{{ material.file.url }}" class="btn btn-sm btn-outline-success me-2" download>
+                                        <i class="fas fa-download me-1"></i>Download PDF
+                                    </a>
+                                {% endif %}
+                                
+                                {% if material.video_link %}
+                                    <a href="{{ material.video_link }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-video me-1"></i>Join Live Class / Watch Video
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center">No materials available yet.</div>
+        {% endif %}
+    </div>
+
+    <!-- Logout -->
+    <div class="text-center mt-5">
+        <a href="{% url 'logout' %}" class="btn btn-danger">
+            <i class="fas fa-sign-out-alt me-1"></i> Logout
+        </a>
+    </div>
+</div>
+{% endblock %}

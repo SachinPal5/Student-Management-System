@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>💼 Fee Management</h2>
+<p><a href="{% url 'admin_dashboard' %}">🔙 Back to Admin Dashboard</a></p>
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Admission Date</th>
+        <th>Fee Due</th>
+        <th>Action</th>
+    </tr>
+    {% for student in students %}
+    <tr style="background-color: {% if student.fee_due > 0 %}#fff0f0{% else %}#f0fff0{% endif %}">
+        <td>{{ forloop.counter }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.course.title }}</td>
+        <td>{{ student.admission_date }}</td>
+        <td>₹{{ student.fee_due }}</td>
+        <td><a href="{% url 'add_payment' student.id %}">➕ Add Payment</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

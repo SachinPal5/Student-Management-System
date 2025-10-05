@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Payment - {{ student.name }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <p><a href="{% url 'admin_dashboard' %}">🔙 Back to Admin Dashboard</a></p>
+    
+    <label>Amount Paid (₹):</label><br>
+    <input type="number" name="amount" required><br><br>
+
+    <label>Note (optional):</label><br>
+    <textarea name="note" rows="3" cols="40"></textarea><br><br>
+
+    <button type="submit">💾 Save Payment</button>
+    <a href="{% url 'fee_management' %}">Cancel</a>
+</form>
+{% endblock %}

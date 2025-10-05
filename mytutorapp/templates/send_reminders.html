@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<p><a href="{% url 'admin_dashboard' %}">🔙 Back to Admin Dashboard</a></p>
+
+<h2>Send Fee Reminders</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Send to All Students with Due Fees</button>
+</form>
+
+{% if messages %}
+<ul>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

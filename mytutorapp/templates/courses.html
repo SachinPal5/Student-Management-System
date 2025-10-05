@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Courses | Khushi Group Tuition{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">📘 Our Courses</h2>
+
+    <div class="row">
+        {% for course in courses %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{ course.title }}</h5>
+                        <p><strong>Teacher:</strong> {{ course.teacher }}</p>
+                        <p><strong>Duration:</strong> {{ course.duration }}</p>
+                        <p><strong>Fee:</strong> ₹{{ course.fee }}</p>
+                        <p><strong>Schedule:</strong> {{ course.schedule }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <hr class="my-5">
+
+    <h3 class="text-center mb-4"><i class="fab fa-youtube text-danger"></i> Free YouTube Lectures</h3>
+
+    <div class="row justify-content-center">
+        <!-- Replace these links with your actual YouTube video links -->
+        <div class="col-md-6 mb-4">
+            <div class="ratio ratio-16x9">
+                <iframe  src="https://www.youtube.com/embed/1WPQ8foqeY8"  allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="ratio ratio-16x9">
+                <iframe  src="https://www.youtube.com/embed/1WPQ8foqeY8"  allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="https://www.youtube.com/@KGTSmartLearners" target="_blank" class="btn btn-danger">
+                <i class="fab fa-youtube me-1"></i> Visit Our YouTube Channel
+            </a>
+{%endblock%}
